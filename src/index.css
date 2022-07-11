@@ -69,3 +69,7 @@ code {
   font-size: 30px;
   margin: 10px auto 30px;
 }
+
+.section-title {
+  margin: 0 auto 20px;
+}

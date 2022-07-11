@@ -1,12 +1,12 @@
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import EmptyMessage from './EmptyMessage';
-import Filter from './Filter';
-import Spiner from './Spiner';
+import ContactForm from 'components/ContactForm';
+import ContactList from 'components/ContactList';
+import EmptyMessage from 'components/EmptyMessage';
+import Filter from 'components/Filter';
+import Spiner from 'components/Spiner';
 
 import { useGetContactsQuery } from 'redux/contactsApi';
 
-export function App() {
+export function ContactsView() {
   const { data, isLoading } = useGetContactsQuery();
 
   return (
@@ -15,6 +15,7 @@ export function App() {
         <h1>Phonebook</h1>
       </div>
       <div className="main-section">
+        <h2 className="section-title">Add new contact</h2>
         <ContactForm />
         <div className="contacts-secton">
           <h2 className="page-title">Your contacts</h2>
