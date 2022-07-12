@@ -4,8 +4,16 @@ import { LoginView } from './views/LoginView';
 import { RegisterView } from './views/RegisterView';
 import { Routes, Route } from 'react-router-dom';
 import { AppBar } from 'components/AppBar/AppBar';
+import authOperations from 'redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 export function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser(), [dispatch]);
+  });
+
   return (
     <>
       <AppBar />
@@ -18,3 +26,5 @@ export function App() {
     </>
   );
 }
+
+// формы - formik и yup

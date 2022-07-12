@@ -9,7 +9,6 @@ const ContactList = () => {
   const filter = useSelector(getFilter);
 
   const { data } = useGetContactsQuery();
-  console.log(data);
 
   const makeFilteredMarkup = () => {
     const lowerCaseFilter = filter.toLocaleLowerCase();
@@ -28,9 +27,9 @@ const ContactList = () => {
   }
   return (
     <ul className={styles.list}>
-      {filteredArray.map(({ id, name, phone }) => (
+      {filteredArray.map(({ id, name, number }) => (
         <li key={id} className={styles.item}>
-          <ContactListItem id={id} name={name} phone={phone} />
+          <ContactListItem id={id} name={name} number={number} />
         </li>
       ))}
     </ul>

@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 import Spiner from 'components/Spiner';
 
-const ContactListItem = ({ id, name, phone }) => {
+const ContactListItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   return (
     <>
       <p className={styles.text}>
-        <span className={styles.text__name}>{name}:</span> {phone}
+        <span className={styles.text__name}>{name}:</span> {number}
       </p>
       <button
         className={styles.delBtn}
@@ -36,7 +36,7 @@ const ContactListItem = ({ id, name, phone }) => {
 ContactListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
 
 export default ContactListItem;

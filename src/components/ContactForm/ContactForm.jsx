@@ -40,7 +40,7 @@ function ContactForm() {
       return;
     }
 
-    addContact(name, number);
+    addContact({ name, number });
     setName('');
     setNumber('');
   };
