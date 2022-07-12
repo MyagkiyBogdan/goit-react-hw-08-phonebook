@@ -1,34 +1,62 @@
 import styles from './ContactListItem.module.css';
-import { ReactComponent as DelBtn } from '../../../icons/del.svg';
+import Modal from 'components/Modal';
+import { useState } from 'react';
+import { ReactComponent as DelBtn } from 'icons/del.svg';
+import { ReactComponent as ChangeBtn } from 'icons/change.svg';
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 import Spiner from 'components/Spiner';
 
 const ContactListItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
+  // const [changeContact] = useChangeContactMutation();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(prevState => !prevState);
+  };
 
   return (
     <>
       <p className={styles.text}>
         <span className={styles.text__name}>{name}:</span> {number}
       </p>
-      <button
-        className={styles.delBtn}
-        onClick={() => deleteContact(id)}
-        type="button"
-      >
-        {isLoading ? (
-          <div className={styles.wrapper}>
-            <span className={styles.delText}>Delete</span>
-            <Spiner width={16} height={16} color="white" />
-          </div>
-        ) : (
-          <>
-            <span> Delete</span>
-            <DelBtn className={styles.delBtnIcon} />
-          </>
-        )}
-      </button>
+      <div className={styles.buttonsWrapper}>
+        <button
+          className={styles.contactsBtn}
+          onClick={toggleModal}
+          type="button"
+        >
+          {isLoading ? (
+            <div className={styles.wrapper}>
+              <Spiner width={16} height={16} color="white" />
+            </div>
+          ) : (
+            <>
+              <ChangeBtn className={styles.contactsBtnIcon} />
+            </>
+          )}
+        </button>
+        <button
+          className={styles.contactsBtn}
+          onClick={() => deleteContact(id)}
+          type="button"
+        >
+          {isLoading ? (
+            <div className={styles.wrapper}>
+              <Spiner width={16} height={16} color="white" />
+            </div>
+          ) : (
+            <>
+              <DelBtn className={styles.contactsBtnIcon} />
+            </>
+          )}
+        </button>
+      </div>
+      {showModal && (
+        <Modal id={id} name={name} number={number} toggleModal={toggleModal} />
+      )}
     </>
   );
 };
