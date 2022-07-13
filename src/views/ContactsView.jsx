@@ -6,7 +6,7 @@ import Spiner from 'components/Spiner';
 
 import { useGetContactsQuery } from 'redux/contactsApi';
 
-export function ContactsView() {
+export default function ContactsView() {
   const { data, isLoading } = useGetContactsQuery();
 
   return (

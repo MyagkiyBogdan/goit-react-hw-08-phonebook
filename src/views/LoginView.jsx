@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/auth/authOperations';
 
-export function LoginView() {
+export default function LoginView() {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');

@@ -3,6 +3,7 @@ import { useGetContactsQuery } from 'redux/contactsApi';
 import Spiner from 'components/Spiner';
 import { useState } from 'react';
 import { useAddContactMutation } from 'redux/contactsApi';
+
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
