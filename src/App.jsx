@@ -4,6 +4,7 @@ import authOperations from 'redux/auth/authOperations';
 // import {  useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useEffect, lazy, Suspense } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 // import authSelectors from 'redux/auth/authSelectors';
 
 const HomeView = lazy(() => import('./views/HomeView'));
@@ -40,6 +41,7 @@ export function App() {
           <Route path="contacts" element={<ContactsView />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </Suspense>
   );
 }
