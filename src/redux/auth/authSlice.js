@@ -33,6 +33,7 @@ export const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [authOperations.fetchCurrentUser.pending](state) {
+      state.user = { ...state.user };
       state.isFetchingCurrentUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
