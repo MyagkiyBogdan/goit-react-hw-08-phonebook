@@ -1,14 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { AppBar } from 'components/AppBar/AppBar';
 import authOperations from 'redux/auth/authOperations';
-// import {  useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spiner from 'components/Spiner';
-
-// import authSelectors from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
@@ -20,16 +18,15 @@ const PrivateRoute = lazy(() => import('./routes/PrivateRoute'));
 export function App() {
   const dispatch = useDispatch();
 
-  // const isFetchingCurrentUser = useSelector(
-  //   state => state.auth.isFetchingCurrentUser
-  // );
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser
+  );
 
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser(), [dispatch]);
-    // console.log('isFetchingCurrentUser', isFetchingCurrentUser);
-  });
-  return (
-    // isFetchingCurrentUser ? null : (
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
+  return isFetchingCurrentUser ? null : (
     <>
       <Suspense
         fallback={
