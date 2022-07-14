@@ -54,7 +54,3 @@ export function App() {
     </>
   );
 }
-
-// формы - formik и yup
-// добавить тосты нотификации авторизации
-// Сделать компонент loading для suspense

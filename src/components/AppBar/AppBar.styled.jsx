@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   height: 64px;
@@ -7,9 +7,10 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color: #445daf;
+  padding: 5px;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   color: #fff;
   font-size: 20px;
   font-weight: 700;
@@ -23,6 +24,25 @@ export const StyledLink = styled(Link)`
   &:not(:first-child) {
     border-left: 1px solid #fff;
     padding-left: 15px;
+  }
+  &.active {
+    color: tomato;
+  }
+
+  @media screen and (max-width: 510px) {
+    font-size: 18px;
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+    &:not(:first-child) {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 510px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -41,6 +61,10 @@ export const UserText = styled.span`
   color: #fff;
   font-size: 20px;
   font-weight: 700;
+
+  @media screen and (max-width: 510px) {
+    font-size: 16px;
+  }
 `;
 
 export const UserSubText = styled.span`
@@ -68,5 +92,17 @@ export const LogoutBtn = styled.button`
   &:active {
     background-image: linear-gradient(#230ca3, #1a0ba5);
     outline: none;
+  }
+
+  @media screen and (max-width: 510px) {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+`;
+
+export const NavigationWrapper = styled.div`
+  @media screen and (max-width: 510px) {
+    display: flex;
+    flex-direction: column;
   }
 `;

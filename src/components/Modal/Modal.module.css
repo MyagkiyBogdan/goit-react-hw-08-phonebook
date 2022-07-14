@@ -16,11 +16,11 @@
 }
 
 .Modal {
-  background-color: #c5d3fc;
   border-radius: 10px;
 }
 
 .form {
+  background-color: #c5d3fc;
   border: 1px solid #000;
   border-radius: 10px;
   margin: 0 20px;
@@ -81,10 +81,6 @@
   background-image: linear-gradient(#230ca3, #1a0ba5);
   outline: none;
 }
-
-/* .addBtn:hover {
-  opacity: 1.5;
-} */
 
 @media screen and (min-width: 510px) {
   .form {

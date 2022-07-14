@@ -142,6 +142,10 @@ export const HomePageButton = styled(Link)`
   &:not(:last-child) {
     margin-right: 20px;
   }
+
+  @media screen and (max-width: 370px) {
+    width: 120px;
+  }
 `;
 
 export const HomePageButtonsWrapper = styled.div`

@@ -55,7 +55,7 @@ export default function LoginView() {
             value={email}
             onChange={handleChange}
             sx={{
-              width: '300px',
+              width: '280px',
               mb: '15px',
             }}
           />
@@ -68,7 +68,7 @@ export default function LoginView() {
             value={password}
             onChange={handleChange}
             sx={{
-              width: '300px',
+              width: '285px',
               mb: '15px',
             }}
           />

@@ -54,7 +54,7 @@ export default function RegisterView() {
             value={name}
             onChange={handleChange}
             sx={{
-              width: '300px',
+              width: '285px',
               mb: '15px',
             }}
           />
@@ -66,7 +66,7 @@ export default function RegisterView() {
             value={email}
             onChange={handleChange}
             sx={{
-              width: '300px',
+              width: '285px',
               mb: '15px',
             }}
           />
@@ -79,7 +79,7 @@ export default function RegisterView() {
             value={password}
             onChange={handleChange}
             sx={{
-              width: '300px',
+              width: '285px',
               mb: '15px',
             }}
           />
