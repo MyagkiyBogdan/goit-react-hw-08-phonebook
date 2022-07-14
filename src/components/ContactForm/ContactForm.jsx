@@ -3,6 +3,7 @@ import { useGetContactsQuery } from 'redux/contactsApi';
 import Spiner from 'components/Spiner';
 import { useState } from 'react';
 import { useAddContactMutation } from 'redux/contactsApi';
+import { toast } from 'react-toastify';
 
 function ContactForm() {
   const [name, setName] = useState('');
@@ -37,11 +38,13 @@ function ContactForm() {
 
     // Check if the contact is already in the contact list
     if (allContacts.includes(name.toLocaleLowerCase())) {
-      alert(`${name} already in contacts.`);
+      toast.error(`${name} already in contacts.`);
+
       return;
     }
 
     addContact({ name, number });
+    toast.success(`😸 ${name} contact successfully added`);
     setName('');
     setNumber('');
   };
@@ -58,9 +61,11 @@ function ContactForm() {
           value={name}
           type="text"
           name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          pattern="^[a-zA-Zа-яА-Я0-9]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash, numbers and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
+          maxLength="14"
+          minLength="1"
         />
       </div>
       <div className={styles.wrapper}>
@@ -76,6 +81,7 @@ function ContactForm() {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
+          maxLength="14"
         />
       </div>
       <button type="submit" className={styles.addBtn}>

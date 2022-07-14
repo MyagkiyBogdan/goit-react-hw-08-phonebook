@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
+import authSelectors from 'redux/auth/authSelectors';
+import { StyledLink } from './AppBar.styled';
 export function Navigation() {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <div>
-      <Link to="/">Home</Link>
-      <Link to="/contacts">My contacts</Link>
+      <StyledLink to="/">Home</StyledLink>
+      {isLoggedIn && <StyledLink to="/contacts">My contacts</StyledLink>}
     </div>
   );
 }

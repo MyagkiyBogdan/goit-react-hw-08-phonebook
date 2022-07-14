@@ -28,15 +28,7 @@ const ContactListItem = ({ id, name, number }) => {
           onClick={toggleModal}
           type="button"
         >
-          {isLoading ? (
-            <div className={styles.wrapper}>
-              <Spiner width={16} height={16} color="white" />
-            </div>
-          ) : (
-            <>
-              <ChangeBtn className={styles.contactsBtnIcon} />
-            </>
-          )}
+          <ChangeBtn className={styles.contactsBtnIcon} />
         </button>
         <button
           className={styles.contactsBtn}

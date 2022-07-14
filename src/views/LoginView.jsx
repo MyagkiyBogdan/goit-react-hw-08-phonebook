@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from '../redux/auth/authOperations';
+import { TextField, Button } from '@mui/material';
+
+import {
+  Form,
+  Title,
+  StyledLink,
+  Text,
+  ViewWrapper,
+  HeaderSection,
+  MainSection,
+} from './Views.styled';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -28,31 +39,58 @@ export default function LoginView() {
   };
 
   return (
-    <div className="wrapper">
-      <div className="header-section">
+    <ViewWrapper>
+      <HeaderSection>
         <h1>Phonebook</h1>
-      </div>
-      <div className="main-section">
-        <h2 className="section-title">Login:</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
+      </HeaderSection>
+      <MainSection>
+        <Title>Sign in</Title>
+        <Text>to continue to Phonebook</Text>
+        <Form onSubmit={handleSubmit}>
+          <TextField
+            required
             name="email"
+            label="Email"
+            variant="outlined"
             value={email}
             onChange={handleChange}
+            sx={{
+              width: '300px',
+              mb: '15px',
+            }}
           />
-          <label htmlFor="password">Password</label>
-          <input
+          <TextField
+            required
             type="password"
             name="password"
+            label="Password"
+            variant="outlined"
             value={password}
             onChange={handleChange}
+            sx={{
+              width: '300px',
+              mb: '15px',
+            }}
           />
-
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </div>
+          <StyledLink to="/register">
+            Have no account? Create it now!
+          </StyledLink>
+          <Button
+            variant="contained"
+            type="submit"
+            sx={{
+              display: 'block',
+              width: '200px',
+              height: '50px',
+              backgroundImage: 'linear-gradient(#323ff1, #1f2df8)',
+              fontSize: '16px',
+              fontWeight: '700',
+            }}
+          >
+            Login
+          </Button>
+        </Form>
+      </MainSection>
+    </ViewWrapper>
   );
 }

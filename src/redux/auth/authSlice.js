@@ -6,7 +6,6 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
-  isError: false,
 };
 
 export const authSlice = createSlice({
@@ -19,9 +18,7 @@ export const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isError = false;
     },
-    [authOperations.register.rejected](state) {
-      state.isError = true;
-    },
+
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;

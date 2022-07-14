@@ -5,6 +5,9 @@ import authOperations from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
 import { useEffect, lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Spiner from 'components/Spiner';
+
 // import authSelectors from 'redux/auth/authSelectors';
 
 const HomeView = lazy(() => import('./views/HomeView'));
@@ -27,22 +30,28 @@ export function App() {
   });
   return (
     // isFetchingCurrentUser ? null : (
-    <Suspense fallback={<div>Loading...</div>}>
-      <AppBar />
-      <Routes>
-        <Route path="/" exact element={<HomeView />} />
-        <Route element={<PublicRoute closed redirectTo="contacts" />}>
-          <Route path="/login" element={<LoginView />} />
-        </Route>
-        <Route element={<PublicRoute closed redirectTo="contacts" />}>
-          <Route path="/register" element={<RegisterView />} />
-        </Route>
-        <Route element={<PrivateRoute redirectTo="login" />}>
-          <Route path="contacts" element={<ContactsView />} />
-        </Route>
-      </Routes>
-      <ToastContainer />
-    </Suspense>
+    <>
+      <Suspense
+        fallback={
+          <Spiner width={250} height={250} color="#0b0fe6" isNeedMargin />
+        }
+      >
+        <AppBar />
+        <Routes>
+          <Route path="/" exact element={<HomeView />} />
+          <Route element={<PublicRoute closed redirectTo="contacts" />}>
+            <Route path="/login" element={<LoginView />} />
+          </Route>
+          <Route element={<PublicRoute closed redirectTo="contacts" />}>
+            <Route path="/register" element={<RegisterView />} />
+          </Route>
+          <Route element={<PrivateRoute redirectTo="login" />}>
+            <Route path="contacts" element={<ContactsView />} />
+          </Route>
+        </Routes>
+      </Suspense>
+      <ToastContainer autoClose={2500} />
+    </>
   );
 }
 

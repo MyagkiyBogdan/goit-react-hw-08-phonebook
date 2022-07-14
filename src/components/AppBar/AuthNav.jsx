@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { StyledLink } from './AppBar.styled';
 
 export function AuthNav() {
   return (
     <div>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+      <StyledLink to="/login">Login</StyledLink>
+      <StyledLink to="/register">Register</StyledLink>
     </div>
   );
 }
