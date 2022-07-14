@@ -23,42 +23,26 @@ export function App() {
     dispatch(authOperations.fetchCurrentUser(), [dispatch]);
     // console.log('isFetchingCurrentUser', isFetchingCurrentUser);
   });
-
-  // return isFetchingCurrentUser ? null : (
-  <Suspense fallback={<div>Loading...</div>}>
-    <AppBar />
-    <Routes>
-      <Route path="/" exact element={<HomeView />} />
-      <Route element={<PublicRoute closed redirectTo="contacts" />}>
-        <Route path="/login" element={<LoginView />} />
-      </Route>
-      <Route element={<PublicRoute closed redirectTo="contacts" />}>
-        <Route path="/register" element={<RegisterView />} />
-      </Route>
-      <Route element={<PrivateRoute redirectTo="login" />}>
-        <Route path="contacts" element={<ContactsView />} />
-      </Route>
-    </Routes>
-  </Suspense>;
-  // );
+  return (
+    // isFetchingCurrentUser ? null : (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AppBar />
+      <Routes>
+        <Route path="/" exact element={<HomeView />} />
+        <Route element={<PublicRoute closed redirectTo="contacts" />}>
+          <Route path="/login" element={<LoginView />} />
+        </Route>
+        <Route element={<PublicRoute closed redirectTo="contacts" />}>
+          <Route path="/register" element={<RegisterView />} />
+        </Route>
+        <Route element={<PrivateRoute redirectTo="login" />}>
+          <Route path="contacts" element={<ContactsView />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
 }
 
 // формы - formik и yup
 // добавить тосты нотификации авторизации
 // Сделать компонент loading для suspense
-
-//  <Suspense fallback={<div>Loading...</div>}>
-//         <AppBar />
-//         <Routes>
-//           <Route path="/" exact element={<HomeView />} />
-//           <Route element={<PublicRoute closed redirectTo="contacts" />}>
-//             <Route path="/login" element={<LoginView />} />
-//           </Route>
-//           <Route element={<PublicRoute closed redirectTo="contacts" />}>
-//             <Route path="/register" element={<RegisterView />} />
-//           </Route>
-//           <Route element={<PrivateRoute redirectTo="login" />}>
-//             <Route path="contacts" element={<ContactsView />} />
-//           </Route>
-//         </Routes>
-//       </Suspense>
