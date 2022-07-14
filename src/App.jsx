@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import { AppBar } from 'components/AppBar/AppBar';
 import authOperations from 'redux/auth/authOperations';
-import { useDispatch, useSelector } from 'react-redux';
+// import {  useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect, lazy, Suspense } from 'react';
-import authSelectors from 'redux/auth/authSelectors';
+// import authSelectors from 'redux/auth/authSelectors';
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
