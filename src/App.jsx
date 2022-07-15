@@ -45,6 +45,7 @@ export function App() {
           <Route element={<PrivateRoute redirectTo="login" />}>
             <Route path="contacts" element={<ContactsView />} />
           </Route>
+          <Route path="*" element={<HomeView />} />
         </Routes>
       </Suspense>
       <ToastContainer autoClose={2500} />
